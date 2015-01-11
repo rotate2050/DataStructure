@@ -1,6 +1,15 @@
 package Cracking_Coding_Interview;
 
 public class Tree_1 extends BinarySearchTree{
+	
+	Tree_1() {
+		super();
+	}
+	
+	Tree_1(SubTree b) {
+		super(b);
+	}
+	
 	/**
 	 * This method checks whether the given tree is balanced or not
 	 * @param pass the root of the given Tree for which you want to check whether

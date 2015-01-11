@@ -17,6 +17,18 @@ class BinarySearchTree {
 	SubTree root = null;
 	//int depth = 0;
 	
+	public BinarySearchTree(SubTree node) {
+		// TODO Auto-generated constructor stub
+		//SubTree node = new SubTree(root.);
+		this.root = node;
+	}
+	
+	public BinarySearchTree() {
+		// TODO Auto-generated constructor stub
+		//SubTree node = new SubTree(root.);
+		this.root = null;
+	}
+	
 	/**
 	 * This method insert the given element integer.
 	 * @param integer which you want to insert into Tree
