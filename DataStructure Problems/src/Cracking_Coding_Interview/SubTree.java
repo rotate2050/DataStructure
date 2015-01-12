@@ -5,10 +5,12 @@ package Cracking_Coding_Interview;
 public class SubTree {
 	SubTree left_child;
 	SubTree right_child;
+	SubTree parent;
 	int value;
 	SubTree(int d) {
 		this.left_child = null;
 		this.right_child = null;
+		this.parent = null;
 		this.value = d;
 	}
 }
@@ -55,9 +57,11 @@ class BinarySearchTree {
 				}
 			}
 			if (prev.value > d) {
+				temp.parent = prev;
 				prev.left_child = temp;
 			}
 			else {
+				temp.parent = prev;
 				prev.right_child = temp;
 			}
 			//node = temp;
@@ -125,6 +129,26 @@ class BinarySearchTree {
 		}
 		
 		return 0;
+	}
+	
+	SubTree SearchByKey(int key) {
+		if (this.root==null) {
+			return null;
+		}
+		SubTree node = this.root;
+		while(node!=null) {
+			if (node.value > key) {
+				node = node.left_child;
+			}
+			else if (node.value < key){
+				node = node.right_child;
+			}
+			else {
+				break; 
+			}
+		}
+		return node;
+		
 	}
 	
 	/*void treebfs(SubTree root) {
