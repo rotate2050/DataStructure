@@ -2,11 +2,9 @@ package Cracking_Coding_Interview;
 
 public class Array_2 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String main_string = args[0];
-		char[] char_array = main_string.toCharArray();
-		int len = main_string.length();
+	static String reverse(String s) {
+		char[] char_array = s.toCharArray();
+		int len = s.length();
 		int loop;
 		if (len%2==0) {
 			loop = len / 2;
@@ -20,9 +18,14 @@ public class Array_2 {
 			char_array[len-1-i] = char_array[i];
 			char_array[i] = temp;
 		}
-		
+		return (new String(char_array));
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String main_string = "Rushikesh";
 		System.out.println("Before Reversing:" + main_string);
-		main_string = new String(char_array);
+		main_string = reverse(main_string);
 		System.out.println("Reverse String:" + main_string);
 	}
 
