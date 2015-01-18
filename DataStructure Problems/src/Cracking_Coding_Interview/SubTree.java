@@ -1,5 +1,9 @@
 package Cracking_Coding_Interview;
 
+import java.util.Stack;
+
+import javax.swing.tree.TreeNode;
+
 
 
 public class SubTree {
@@ -151,6 +155,24 @@ class BinarySearchTree {
 		
 	}
 	
+	void inorderIterator(SubTree root) {
+		Stack<SubTree> st = new Stack<SubTree>();
+		SubTree cur_node = root;
+		
+		while(cur_node!=null || (!st.isEmpty())) {
+			
+			while(cur_node!=null) {
+				st.push(cur_node);
+				cur_node = cur_node.left_child;
+			}
+			if (cur_node==null && (!st.isEmpty())) {
+				SubTree temp = st.pop();
+				System.out.print(temp.value + " ");
+				cur_node = temp.right_child;
+			}
+		}
+		//System.out.print("Rushikesh");
+	}
 	/*void treebfs(SubTree root) {
 		
 	}*/

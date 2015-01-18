@@ -4,6 +4,7 @@ public class Bit_1 {
 
 	public static int updateBits(int n, int m, int i, int j) {
 		int max = ~0; /* All 1’s */
+		
 		int test = ~(1 << j);
 		System.out.println("Test: " + test);
 		System.out.println("Max: " + max);
