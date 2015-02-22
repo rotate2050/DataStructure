@@ -7,11 +7,11 @@ import javax.swing.tree.TreeNode;
 
 
 public class SubTree {
-	SubTree left_child;
-	SubTree right_child;
-	SubTree parent;
-	int value;
-	SubTree(int d) {
+	public SubTree left_child;
+	public SubTree right_child;
+	public SubTree parent;
+	public int value;
+	public SubTree(int d) {
 		this.left_child = null;
 		this.right_child = null;
 		this.parent = null;
@@ -77,7 +77,7 @@ class BinarySearchTree {
 			return;
 		}
 		inorderTraversal(root.left_child);	
-		System.out.println(root.value);
+		System.out.print(root.value + ",");
 		inorderTraversal(root.right_child);
 	}
 	
@@ -87,14 +87,14 @@ class BinarySearchTree {
 		}
 		postorderTraversal(root.left_child);
 		postorderTraversal(root.right_child);
-		System.out.println(root.value);
+		System.out.print(root.value + ",");
 	}
 	
 	void preorderTraversal(SubTree root) {
 		if (root==null) {
 			return;
 		}
-		System.out.println(root.value);
+		System.out.print(root.value + ",");
 		preorderTraversal(root.left_child);
 		preorderTraversal(root.right_child);
 		
@@ -159,7 +159,7 @@ class BinarySearchTree {
 		Stack<SubTree> st = new Stack<SubTree>();
 		SubTree cur_node = root;
 		
-		while(cur_node!=null || (!st.isEmpty())) {
+		while(cur_node!=null && (!st.isEmpty())) {
 			
 			while(cur_node!=null) {
 				st.push(cur_node);
@@ -173,7 +173,86 @@ class BinarySearchTree {
 		}
 		//System.out.print("Rushikesh");
 	}
+	
+	void preorderIterator(SubTree root) {
+		Stack<SubTree> st = new Stack<SubTree>();
+		SubTree cur_node = root;
+		
+		while(cur_node!=null || (!st.isEmpty())) {
+			
+			System.out.print(cur_node.value + ",");
+			
+			while(cur_node!=null) {
+				if(cur_node.right_child!=null) {
+					st.push(cur_node.right_child);
+				}
+				cur_node = cur_node.left_child;
+				if (cur_node!=null) {
+					System.out.print(cur_node.value + ",");
+				}
+			}
+			if (cur_node==null && (!st.isEmpty())) {
+				SubTree temp = st.pop();
+				cur_node = temp;
+			}
+		}
+		//System.out.print("Rushikesh");
+	}
+	
+	
 	/*void treebfs(SubTree root) {
 		
+	}*/
+	
+	public boolean isBinaryTree(SubTree root) {
+		if ((root.left_child==null) && (root.right_child==null)) {
+			return true;
+		}
+		else if ((root.left_child==null) || (root.right_child==null)) {
+			
+			if (root.left_child==null) {
+				if (root.right_child.value > root.value) {
+					return isBinaryTree(root.right_child);
+				}
+				else {
+					return false;
+				}
+			}
+			else {
+				if (root.left_child.value < root.value) {
+					return isBinaryTree(root.left_child);
+				}
+				else {
+					return false;
+				}
+				
+			}
+		}
+		
+		else if ((root.left_child.value <= root.value) && (root.right_child.value >= root.value)) {
+			if((isBinaryTree(root.left_child))&&(isBinaryTree(root.right_child))) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
+	/*void add(int i) {
+		SubTree node = root;
+		SubTree temp = new SubTree(i);
+		SubTree prev=null;
+		// if Tree is empty
+		if (node==null) {
+			root = temp;
+		}
+		while () {
+			
+		}
 	}*/
 }
